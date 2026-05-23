@@ -1,0 +1,30 @@
+---
+- name: Konfigurasi Server untuk Aplikasi DevOps
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+        update_cache: yes
+
+    - name: Install npm
+      apt:
+        name: npm
+        state: present
+
+    - name: Buat direktori aplikasi
+      file:
+        path: /opt/uts-devops
+        state: directory
+        mode: '0755'
+
+    - name: Salin file aplikasi
+      copy:
+        src: ../app.js
+        dest: /opt/uts-devops/app.js
+
+    - name: Jalankan aplikasi
+      shell: node /opt/uts-devops/app.js &
