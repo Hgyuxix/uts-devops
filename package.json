@@ -11,5 +11,19 @@
   "devDependencies": {
     "jest": "^29.0.0",
     "supertest": "^6.3.0"
-  }
+  },
+  "description": "Menambahkan fitur login dengan autentikasi JWT.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hgyuxix/uts-devops.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Hgyuxix/uts-devops/issues"
+  },
+  "homepage": "https://github.com/Hgyuxix/uts-devops#readme"
 }

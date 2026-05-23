@@ -3,30 +3,34 @@ name: CI Pipeline - UTS DevOps
 on:
   push:
     branches:
-      - development    # pipeline jalan setiap push ke branch development
+      - development
   pull_request:
     branches:
       - development
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest    # GitHub menyediakan server Ubuntu gratis
+    runs-on: ubuntu-latest
 
     steps:
-      # Langkah 1: ambil kode dari repo
       - name: Checkout kode
         uses: actions/checkout@v3
 
-      # Langkah 2: install Node.js versi 18
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # Langkah 3: install semua library (express, jest, dll)
       - name: Install dependensi
         run: npm install
 
-      # Langkah 4: jalankan semua unit test
       - name: Jalankan unit test
         run: npm test
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Staging
+        run: echo "Deploy berhasil ke staging"
