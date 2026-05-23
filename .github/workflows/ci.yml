@@ -22,4 +22,4 @@ jobs:
         run: npm install
 
       - name: Jalankan unit test
-        run: npm test
+        run: npx jest --forceExit
